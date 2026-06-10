@@ -1,0 +1,213 @@
+/* wiz4 - "midnight cabinet in a wizard's study" */
+
+:root {
+  --ink: #0d0817;
+  --night: #131027;
+  --night2: #1c1736;
+  --gold: #ffd75e;
+  --gold-dim: #c79a2a;
+  --parchment: #efe3c2;
+  --parchment-ink: #3a2c1a;
+  --ember: #e04f2a;
+  --glow: #7df0ff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #d8d4ec;
+  font-family: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace;
+  background:
+    radial-gradient(1px 1px at 12% 18%, #ffffffcc 50%, transparent 51%),
+    radial-gradient(1px 1px at 38% 6%, #ffffff88 50%, transparent 51%),
+    radial-gradient(2px 2px at 61% 24%, #ffffff66 50%, transparent 51%),
+    radial-gradient(1px 1px at 83% 12%, #ffffffaa 50%, transparent 51%),
+    radial-gradient(1px 1px at 71% 41%, #ffffff55 50%, transparent 51%),
+    radial-gradient(1px 1px at 24% 33%, #ffffff77 50%, transparent 51%),
+    radial-gradient(ellipse 90% 60% at 50% -10%, var(--night2), transparent),
+    linear-gradient(180deg, var(--night) 0%, var(--ink) 70%);
+  background-attachment: fixed;
+}
+
+.hall {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 16px 60px;
+}
+
+/* ------------------------------- marquee ------------------------------- */
+.marquee { text-align: center; margin-bottom: 26px; }
+.rune-row {
+  color: var(--gold-dim);
+  letter-spacing: 1.2em;
+  text-indent: 1.2em;
+  font-size: 13px;
+  opacity: .8;
+}
+.marquee h1 {
+  font-family: 'Pirata One', 'IBM Plex Mono', serif;
+  font-size: clamp(64px, 11vw, 118px);
+  line-height: .95;
+  margin: 6px 0 4px;
+  color: var(--gold);
+  text-shadow:
+    0 2px 0 var(--gold-dim),
+    0 6px 0 #4a3300,
+    0 0 38px #ffd75e44;
+  letter-spacing: .04em;
+}
+
+/* ------------------------------- cabinet ------------------------------- */
+.cabinet { display: flex; flex-direction: column; align-items: center; }
+
+.bezel {
+  padding: 22px;
+  border-radius: 14px;
+  background:
+    linear-gradient(145deg, #3b2d12, #241a08 40%, #3b2d12 75%, #181004);
+  border: 2px solid #58430f;
+  box-shadow:
+    inset 0 0 0 2px #00000088,
+    inset 0 0 0 5px #6e5314,
+    inset 0 0 0 6px #00000066,
+    0 24px 70px -18px #000000e0,
+    0 0 90px -16px #7df0ff30;
+  position: relative;
+}
+.bezel::before, .bezel::after {
+  content: '✦';
+  position: absolute;
+  color: var(--gold-dim);
+  font-size: 13px;
+  top: 4px;
+}
+.bezel::before { left: 10px; }
+.bezel::after { right: 10px; }
+
+.screen {
+  position: relative;
+  width: 960px;
+  max-width: calc(100vw - 110px);
+  aspect-ratio: 480 / 256;
+  background: #000;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: inset 0 0 24px #000;
+}
+#game {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  outline: none;
+}
+.scanlines {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0px, transparent 2px,
+    #00000022 3px, transparent 4px
+  );
+  mix-blend-mode: multiply;
+}
+.glass {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 130% 120% at 50% 0%, #ffffff0d, transparent 45%),
+    radial-gradient(ellipse 160% 140% at 50% 50%, transparent 62%, #00000055 100%);
+}
+
+.cabinet-base {
+  display: flex; align-items: center; gap: 18px;
+  margin-top: -2px;
+  padding: 8px 26px;
+  background: linear-gradient(180deg, #241a08, #120c04);
+  border: 2px solid #58430f;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  color: #b8a468;
+  font-size: 12.5px;
+  letter-spacing: .08em;
+}
+.cabinet-base p { margin: 0; }
+.screw {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #d8c89a, #6e5a28 65%, #2c2208);
+  box-shadow: 0 1px 2px #000;
+  position: relative;
+}
+.screw::after {
+  content: ''; position: absolute; left: 1px; right: 1px; top: 4px; height: 1.6px;
+  background: #2c2208; transform: rotate(38deg);
+}
+
+kbd {
+  font-family: inherit;
+  background: #262040;
+  border: 1px solid #4a4070;
+  border-bottom-width: 3px;
+  border-radius: 5px;
+  padding: 1px 7px;
+  font-size: 12px;
+  color: #efeaff;
+  white-space: nowrap;
+}
+
+/* -------------------------------- cards -------------------------------- */
+.cards {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+.card {
+  background:
+    linear-gradient(8deg, #e6d7b2, var(--parchment) 30%, #f4ead0 70%, #e2d2aa);
+  color: var(--parchment-ink);
+  border-radius: 3px;
+  padding: 18px 20px 16px;
+  box-shadow:
+    0 2px 0 #b6a378,
+    0 16px 34px -14px #000000c8;
+  position: relative;
+  transform: rotate(-.4deg);
+}
+.card:nth-child(2) { transform: rotate(.5deg); }
+.card:nth-child(3) { transform: rotate(-.25deg); }
+.card::before {
+  content: '';
+  position: absolute; top: -7px; left: 50%;
+  width: 56px; height: 14px;
+  transform: translateX(-50%) rotate(-1deg);
+  background: #d8b66266;
+  border-left: 1px dashed #00000022;
+  border-right: 1px dashed #00000022;
+}
+.card h2 {
+  font-family: 'Pirata One', serif;
+  font-weight: 400;
+  font-size: 25px;
+  margin: 0 0 8px;
+  color: #5a1f10;
+  border-bottom: 2px solid #5a1f1033;
+  padding-bottom: 5px;
+}
+.card h2 .small { font-size: 14px; color: #8a6a3a; font-family: 'IBM Plex Mono', monospace; }
+.card ul, .card ol { margin: 8px 0 2px; padding-left: 20px; }
+.card li { margin: 5px 0; font-size: 13.5px; line-height: 1.45; }
+.card em { color: #7a4a18; }
+.card-note { font-size: 12.5px; font-style: italic; margin: 4px 0 6px; color: #6a5230; }
+.card kbd {
+  background: #dcca9f;
+  border-color: #a8915e;
+  color: #3a2c1a;
+}
+
+@media (max-width: 720px) {
+  .bezel { padding: 12px; }
+  .screen { max-width: calc(100vw - 70px); }
+}

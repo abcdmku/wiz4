@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>wiz4</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="wiz4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="hall">
+  <header class="marquee">
+    <div class="rune-row" aria-hidden="true">✦ ✶ ✦ ✶ ✦</div>
+    <h1>wiz4</h1>
+  </header>
+
+  <section class="cabinet">
+    <div class="bezel">
+      <div class="screen">
+        <canvas id="game" width="480" height="256"></canvas>
+        <div class="scanlines" aria-hidden="true"></div>
+        <div class="glass" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="cabinet-base">
+      <span class="screw" aria-hidden="true"></span>
+      <p>click the screen, then press <kbd>S</kbd></p>
+      <span class="screw" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <section class="cards">
+    <article class="card">
+      <h2>Incantations <span class="small">(keys)</span></h2>
+      <ul>
+        <li><kbd>←</kbd><kbd>→</kbd> walk</li>
+        <li><kbd>Space</kbd> / <kbd>Ctrl</kbd> jump</li>
+        <li><kbd>↑</kbd> enter door</li>
+        <li><kbd>↓</kbd> duck <em>(&amp; vanish, once learned)</em></li>
+        <li><kbd>P</kbd> pause &nbsp;<kbd>M</kbd> mute &nbsp;<kbd>F2</kbd> rebind</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h2>The Spell Ladder</h2>
+      <p class="card-note">Fill the flask with potions to learn each spell &mdash; and mind that
+      dying forgets them all.</p>
+      <ol>
+        <li>Higher Jump</li>
+        <li>Invisibility <em>&mdash; duck to use; you cannot move</em></li>
+        <li>Double Jump <em>&mdash; press jump again at the top</em></li>
+        <li>Flame Resistance</li>
+        <li>Helper Sprite <em>&mdash; banishes creatures in your path</em></li>
+        <li>Restore <em>&mdash; re-learn everything after death, once</em></li>
+      </ol>
+    </article>
+
+    <article class="card">
+      <h2>Traveller's Notes</h2>
+      <ul>
+        <li>Every creature is fatal to touch. The wizard does not fight &mdash; he <em>avoids</em>.</li>
+        <li>Keys open locked doors; doors travel in pairs and remember you.</li>
+        <li>Levers toggle the gold rune-blocks.</li>
+        <li>Springboards mean somewhere above is worth visiting. So do suspicious gaps.</li>
+        <li>Stars are worth 1000. Hidden rooms exist.</li>
+      </ul>
+    </article>
+  </section>
+
+</main>
+
+<script src="px.js"></script>
+<script src="sfx.js"></script>
+<script src="sprites.js"></script>
+<script src="tiles.js"></script>
+<script src="levels.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
